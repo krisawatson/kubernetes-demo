@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+  namespace: demo
+  resourceVersion: "1"
+data:
+  config.json: |-
+    {
+      "property1": "value1",
+      "property2": "value2",
+      "property3": "value3"
+    }
