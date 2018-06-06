@@ -29,7 +29,7 @@ spec:
             path: /health
             port: 8237
             scheme: HTTP
-          initialDelaySeconds: 30
+          initialDelaySeconds: 10
           periodSeconds: 10
           timeoutSeconds: 10
           successThreshold: 1
@@ -39,14 +39,11 @@ spec:
             path: /health
             port: 8237
             scheme: HTTP
-          initialDelaySeconds: 30
+          initialDelaySeconds: 10
           periodSeconds: 10
           timeoutSeconds: 10
           successThreshold: 1
           failureThreshold: 10
-        env:
-        - name: CONFIG
-          value: file:/etc/config/config.json
         volumeMounts:
         - name: config-volume
           mountPath: /etc/config

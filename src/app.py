@@ -22,7 +22,7 @@ def write_to_file():
         values = content.split(",")
     values.append(request.data)
     line = ','.join(str(v) for v in values)
-    with open(FILE, mode='w') as f:
+    with open(FILE, mode='w+') as f:
         f.write(line)
 
     return "Success"
@@ -41,9 +41,7 @@ def read_from_file():
 
 @app.route('/read/config/<value>', methods=['GET'])
 def read_from_config(value):
-    config_file = os.environ['CONFIG']
-    if config_file.startswith('file:'):
-        config_file = config_file.replace('file:', '', 1)
+    config_file = _get_config_file()
     with open(config_file) as conf:
         config = json.load(conf)
         try:
@@ -66,6 +64,11 @@ def _read_file():
         with open(FILE, 'r') as file:
             content = file.read()
     return content
+
+
+def _get_config_file():
+    config_file = '/etc/config/config.json'
+    return config_file
 
 
 if __name__ == "__main__":
