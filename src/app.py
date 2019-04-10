@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 import json
+import os
 import os.path
 
 
@@ -51,11 +52,19 @@ def read_from_config(value):
     return config_value
 
 
-# @app.route('/delete', methods=['DELETE'])
-# def delete_from_file():
-#     if os.path.isfile(FILE):
-#         os.remove(FILE)
-#     return "Success"
+@app.route('/hello/<name>', methods=['GET'])
+def say_hello(name):
+    return 'Hello ' + name
+
+
+@app.route('/secret', methods=['GET'])
+def get_secret():
+    return _get_secret()
+
+
+@app.route('/crash', methods=['GET'])
+def crash():
+    os._exit(0)
 
 
 def _read_file():
@@ -69,6 +78,11 @@ def _read_file():
 def _get_config_file():
     config_file = '/etc/config/config.json'
     return config_file
+
+
+def _get_secret():
+    with open('/etc/demo-secret/guilty-secret') as secret:
+        return secret.read()
 
 
 if __name__ == "__main__":

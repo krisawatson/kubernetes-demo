@@ -62,22 +62,6 @@ spec:
             storage: 1Gi
         storageClassName: manual
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: kubernetes-demo-1
-  namespace: demo
-spec:
-  selector:
-    app: kubernetes-demo
-    version: "1.0"
-  ports:
-  - protocol: TCP
-    port: 8237
-    targetPort: 8237
-    nodePort: 30237
-  type: NodePort
----
 kind: PersistentVolume
 apiVersion: v1
 metadata:

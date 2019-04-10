@@ -28,3 +28,10 @@ spec:
           timeoutSeconds: 10
           successThreshold: 1
           failureThreshold: 10
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+      volumes:
+      - name: config-volume
+        configMap:
+          name: config
