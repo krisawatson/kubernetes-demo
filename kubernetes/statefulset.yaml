@@ -1,9 +1,4 @@
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: demo
----
 apiVersion: apps/v1beta2
 kind: StatefulSet
 metadata:
@@ -29,16 +24,6 @@ spec:
         ports:
         - containerPort: 8237
         livenessProbe:
-          httpGet:
-            path: /health
-            port: 8237
-            scheme: HTTP
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          timeoutSeconds: 10
-          successThreshold: 1
-          failureThreshold: 10
-        readinessProbe:
           httpGet:
             path: /health
             port: 8237
