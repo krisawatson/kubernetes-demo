@@ -4,7 +4,7 @@ metadata:
   name: kubernetes-demo
   namespace: demo
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
