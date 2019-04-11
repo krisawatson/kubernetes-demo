@@ -4,6 +4,7 @@ metadata:
   name: kubernetes-demo
   namespace: demo
 spec:
+  terminationGracePeriodSeconds: 10
   containers:
   - name: kubernetes-demo
     image: krisawatson/k8s-demo:latest
